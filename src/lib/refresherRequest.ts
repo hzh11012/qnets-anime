@@ -61,8 +61,7 @@ class RefresherAxiosRequest {
                 url,
                 method: 'post',
                 headers: {
-                    Authorization: token,
-                    'x-forwarded-for': '222.129.49.217'
+                    Authorization: token
                 }
             });
             Promise.allSettled(this.temporaryQueue);
