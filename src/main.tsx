@@ -10,7 +10,12 @@ import '@/style/global.css';
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <ThemeProvider defaultTheme="system" storageKey="qnets-ui-theme">
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            storageKey="qnets-ui-theme"
+            disableTransitionOnChange
+        >
             <TooltipProvider>
                 <RouterProvider router={router} />
                 <Toaster />

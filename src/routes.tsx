@@ -31,6 +31,8 @@ const staticRoutes: RouteObject[] = [
         path: '/',
         loader: tokenLoader,
         element: <Layout />,
+        // TODO
+        hydrateFallbackElement: <>Loading</>,
         children: [
             {
                 index: true,

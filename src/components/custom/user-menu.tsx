@@ -76,29 +76,32 @@ const UserMenu: React.FC = () => {
                                 {userInfo.nickname?.slice(0, 1)}
                             </AvatarFallback>
                         </Avatar>
-                        <p
+                        <h3
                             className={cn('text-base text-center/*  */', {
                                 'text-theme-pink':
                                     userInfo.scope > GENERAL_SCOPE
                             })}
                         >
                             {userInfo.nickname}
-                        </p>
-                        <p
+                        </h3>
+                        <div
                             className={cn(
                                 'text-xs leading-none text-muted-foreground'
                             )}
                         >
                             <Badge
                                 variant="secondary"
-                                className={cn('tracking-[0.15rem]', {
-                                    'bg-theme-pink hover:bg-theme-pink text-[10px]':
-                                        userInfo.scope > GENERAL_SCOPE
-                                })}
+                                className={cn(
+                                    'tracking-[0.15rem] text-white text-[10px]',
+                                    {
+                                        'bg-theme-pink hover:bg-theme-pink':
+                                            userInfo.scope > GENERAL_SCOPE
+                                    }
+                                )}
                             >
-                                {SCOPE_MAP[userInfo.scope]}
+                                {SCOPE_MAP[userInfo.scope || 0]}
                             </Badge>
-                        </p>
+                        </div>
                     </div>
                 </DropdownMenuLabel>
                 <DropdownMenuItem

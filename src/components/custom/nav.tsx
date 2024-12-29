@@ -22,9 +22,9 @@ const Nav: React.FC<NavProps> = ({ links }) => {
                         <NavigationMenuItem key={`${link.href}-${index}`}>
                             <Link
                                 to={link.href}
-                                className={cn('flex items-center')}
+                                className={cn(navigationMenuTriggerStyle())}
                             >
-                                <div className={navigationMenuTriggerStyle()}>
+                                <div className={cn('flex items-center')}>
                                     {link.icon && (
                                         <div className={cn('mr-2')}>
                                             {link.icon}

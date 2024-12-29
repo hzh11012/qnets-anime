@@ -11,6 +11,7 @@ import { links } from '@/links';
 import Nav from '@/components/custom/nav';
 import UserMenu from '@/components/custom/user-menu';
 import { cn } from '@/lib/utils';
+import ThemeSwitch from './components/custom/theme-switch';
 
 const Layout: React.FC = () => {
     return (
@@ -36,7 +37,10 @@ const Layout: React.FC = () => {
                         <Nav links={links} />
                     </div>
                     {/** right-entry */}
-                    <UserMenu />
+                    <div className={cn('flex items-center gap-4 select-none')}>
+                        <ThemeSwitch />
+                        <UserMenu />
+                    </div>
                 </div>
             </LayoutHeader>
             <LayoutBody>
