@@ -5,6 +5,12 @@ const config: Config = {
     content: ['./index.html', './src/**/*.{ts,tsx}'],
     theme: {
         extend: {
+            screens: {
+                common: '111.25rem'
+            },
+            spacing: {
+                common: '111.25rem'
+            },
             borderRadius: {
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
@@ -47,6 +53,9 @@ const config: Config = {
                 'theme-blue': {
                     DEFAULT: '#23ade5'
                 },
+                'theme-orange': {
+                    DEFAULT: '#fbbc09'
+                },
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',
                 ring: 'hsl(var(--ring))'
@@ -87,9 +96,8 @@ const config: Config = {
                 '404': 'rotate-in 0.5s ease-out'
             },
             backgroundImage: {
-                404: "url('@/assets/404.png')",
-                'bottom-shadow':
-                    'linear-gradient(180deg,rgba(22,22,26,0),rgb(17,19,25) 100%)'
+                404: "url('./404.png')",
+                banner: 'linear-gradient(180deg, hsl(var(--background) / 0%), hsl(var(--background) / 7%) 11.79%, hsl(var(--background) / 8%) 21.38%, hsl(var(--background) / 7.04%) 29.12%, hsl(var(--background) / 12.07%) 35.34%, hsl(var(--background) / 18.15%) 40.37%, hsl(var(--background) / 25.12%) 44.56%, hsl(var(--background) / 32.81%) 48.24%, hsl(var(--background) / 41.05%) 51.76%, hsl(var(--background) / 49.68%) 55.44%, hsl(var(--background) / 58.52%) 59.63%, hsl(var(--background) / 67.4%) 64.66%, hsl(var(--background) / 76.16%) 70.88%, hsl(var(--background) / 84.63%) 78.62%, hsl(var(--background) / 92.63%) 88.21%, hsl(var(--background)));'
             }
         }
     },

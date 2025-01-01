@@ -1,7 +1,17 @@
 import React from 'react';
+import Banner from '@/components/custom/banner';
+import { cn } from '@/lib/utils';
+import { BannerItem } from '@/apis/models/home-model';
+import { useLoaderData } from 'react-router-dom';
 
 const Home: React.FC = () => {
-    return <div className="flex h-[3000px] gap-6">Content</div>;
+    const { bannerList }: { bannerList: BannerItem[] } = useLoaderData();
+
+    return (
+        <div className={cn('-mt-14')}>
+            <Banner bannerList={bannerList} />
+        </div>
+    );
 };
 
 export default Home;

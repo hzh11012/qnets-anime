@@ -1,3 +1,4 @@
+import React from 'react';
 import { useTheme } from 'next-themes';
 import { Moon, Sun, Tv2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,7 +10,11 @@ const themeOptions: Record<string, 'system' | 'light' | 'dark'> = {
     light: 'dark'
 };
 
-const ThemeSwitch = () => {
+interface ThemeSwitchProps {
+    className?: string;
+}
+
+const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ className }) => {
     const { theme, setTheme } = useTheme();
 
     const Icon = theme === 'light' ? Sun : theme === 'dark' ? Moon : Tv2;
@@ -18,7 +23,10 @@ const ThemeSwitch = () => {
         <Button
             size="icon"
             variant="ghost"
-            className={cn('rounded-full size-10')}
+            className={cn(
+                'rounded-full size-10 hover:bg-foreground/15',
+                className
+            )}
             onClick={() => {
                 theme && setTheme(themeOptions[theme]);
             }}

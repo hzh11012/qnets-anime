@@ -42,18 +42,6 @@ class AxiosRequest {
     private interceptorsResponse() {
         this.axiosInstance.interceptors.response.use(
             (response: AxiosResponse) => {
-                // 特殊处理damaku的接口
-                if (
-                    response.data.code !== 200 &&
-                    !response.config.url?.includes('danmaku')
-                ) {
-                    toast({
-                        description: response.data.msg || 'failed',
-                        duration: 1500
-                    });
-                    return Promise.reject(response.data);
-                }
-
                 return response.data;
             },
             async error => {
@@ -71,8 +59,7 @@ class AxiosRequest {
                 }
 
                 toast({
-                    description: error.response.data.msg || 'failed',
-                    duration: 1500
+                    description: error.response.data.msg || 'failed'
                 });
 
                 return Promise.reject({

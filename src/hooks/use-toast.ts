@@ -139,19 +139,20 @@ function dispatch(action: Action) {
 
 type Toast = Omit<ToasterToast, 'id'>;
 
-function toast({ ...props }: Toast) {
+function toast({ duration = 1500, ...props }: Toast) {
     const id = genId();
 
     const update = (props: ToasterToast) =>
         dispatch({
             type: 'UPDATE_TOAST',
-            toast: { ...props, id }
+            toast: { duration, ...props, id }
         });
     const dismiss = () => dispatch({ type: 'DISMISS_TOAST', toastId: id });
 
     dispatch({
         type: 'ADD_TOAST',
         toast: {
+            duration,
             ...props,
             id,
             open: true,

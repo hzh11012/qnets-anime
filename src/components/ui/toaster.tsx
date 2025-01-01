@@ -1,7 +1,6 @@
 import { useToast } from '@/hooks/use-toast';
 import {
     Toast,
-    ToastClose,
     ToastDescription,
     ToastProvider,
     ToastTitle,
@@ -22,7 +21,7 @@ export function Toaster() {
                 ...props
             }) {
                 return (
-                    <Toast key={id} {...props}>
+                    <Toast key={id} className={cn('pr-4')} {...props}>
                         <div className={cn('grid gap-1')}>
                             {title && <ToastTitle>{title}</ToastTitle>}
                             {description && (
@@ -32,7 +31,6 @@ export function Toaster() {
                             )}
                         </div>
                         {action}
-                        <ToastClose />
                     </Toast>
                 );
             })}

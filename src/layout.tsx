@@ -11,7 +11,8 @@ import { links } from '@/links';
 import Nav from '@/components/custom/nav';
 import UserMenu from '@/components/custom/user-menu';
 import { cn } from '@/lib/utils';
-import ThemeSwitch from './components/custom/theme-switch';
+import ThemeSwitch from '@/components/custom/theme-switch';
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
 
 const Layout: React.FC = () => {
     return (
@@ -23,22 +24,23 @@ const Layout: React.FC = () => {
             >
                 <div
                     className={cn(
-                        'flex items-center justify-between px-6 py-2'
+                        'flex items-center justify-between px-2 md:px-6 py-2'
                     )}
                 >
                     {/** left-entry */}
                     <div className={cn('flex items-center gap-2 select-none')}>
                         <Logo size="2.5rem" />
-                        <h3
-                            className={cn('text-xl cursor-default text-nowrap')}
-                        >
-                            ライトアニメ
-                        </h3>
-                        <Nav links={links} />
+                        <Avatar className={cn('w-40')}>
+                            <AvatarImage
+                                src="./logo.png"
+                                className={cn('object-contain')}
+                            />
+                        </Avatar>
+                        <Nav className={cn('md:block hidden')} links={links} />
                     </div>
                     {/** right-entry */}
                     <div className={cn('flex items-center gap-4 select-none')}>
-                        <ThemeSwitch />
+                        <ThemeSwitch className={cn('md:flex hidden')} />
                         <UserMenu />
                     </div>
                 </div>

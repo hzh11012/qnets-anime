@@ -10,19 +10,23 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 interface NavProps {
+    className?: string;
     links: NavLink[];
 }
 
-const Nav: React.FC<NavProps> = ({ links }) => {
+const Nav: React.FC<NavProps> = ({ links, className }) => {
     return (
-        <NavigationMenu>
+        <NavigationMenu className={className}>
             <NavigationMenuList>
                 {links.map((link, index) => {
                     return (
                         <NavigationMenuItem key={`${link.href}-${index}`}>
                             <Link
                                 to={link.href}
-                                className={cn(navigationMenuTriggerStyle())}
+                                className={cn(
+                                    navigationMenuTriggerStyle(),
+                                    'bg-inherit hover:bg-foreground/15'
+                                )}
                             >
                                 <div className={cn('flex items-center')}>
                                     {link.icon && (
