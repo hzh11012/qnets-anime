@@ -5,7 +5,7 @@ import { LOGIN_URL } from '@/lib/config';
 import { GENERAL_SCOPE } from '@/lib/consts';
 import { userStore } from '@/store/user';
 import { getUserInfo } from '@/apis/user';
-import { getBannerList } from '@/apis/home';
+import { getBannerList, getCategoryList } from '@/apis/home';
 
 const tokenLoader = async () => {
     const { data, code, errorCode } = await getUserInfo();
@@ -29,10 +29,12 @@ const tokenLoader = async () => {
 
 const homeLoader = async () => {
     const banner = getBannerList();
-    const [bannerData] = await Promise.all([banner]);
+    const category = getCategoryList();
+    const [bannerData, categoryData] = await Promise.all([banner, category]);
 
     return {
-        bannerList: bannerData.data
+        bannerList: bannerData.data,
+        categoryList: categoryData.data.rows
     };
 };
 
@@ -43,6 +45,7 @@ const staticRoutes: RouteObject[] = [
         element: <Layout />,
         // TODO
         hydrateFallbackElement: <>Loading</>,
+        errorElement: <>Error</>,
         children: [
             {
                 index: true,

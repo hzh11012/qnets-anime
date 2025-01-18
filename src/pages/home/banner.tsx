@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import Hashids from 'hashids';
 import {
     Carousel,
     CarouselContent,
@@ -27,17 +26,16 @@ const BannerItemWrapper: React.FC<BannerItem> = ({
     is_collected,
     latest_video
 }) => {
-    const hashids = new Hashids('', 10);
     const navigate = useNavigate();
     const [collected, setCollected] = useState<boolean>(is_collected);
 
     const handlePlay = () => {
         if (!latest_video) return;
-        navigate(`/play/${hashids.encode(latest_video.id)}`);
+        navigate(`/play/${latest_video.id}`);
     };
 
     const handleDetail = () => {
-        navigate(`/detail/${hashids.encode(aid)}`);
+        navigate(`/detail/${aid}`);
     };
 
     const handleCollect = async () => {
@@ -51,7 +49,7 @@ const BannerItemWrapper: React.FC<BannerItem> = ({
     return (
         <CarouselItem className={cn('pl-0')}>
             <div className={cn('md:block hidden')}>
-                <AspectRatio ratio={2 / 1} asChild>
+                <AspectRatio ratio={16 / 9} asChild>
                     <div
                         className={cn('w-full h-full bg-cover bg-center')}
                         style={{
@@ -148,7 +146,7 @@ const BannerItemWrapper: React.FC<BannerItem> = ({
                     >
                         <div
                             className={cn(
-                                'absolute grid bottom-0 w-full bg-banner p-4 pt-32 gap-2'
+                                'absolute grid bottom-0 w-full bg-banner p-6 pt-32 gap-2'
                             )}
                         >
                             <div
