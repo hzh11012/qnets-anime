@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { Tv, Clapperboard, ChartColumn } from 'lucide-react';
 
 export interface NavLink {
